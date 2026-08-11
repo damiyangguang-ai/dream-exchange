@@ -1,0 +1,31 @@
+# --- Secrets: never commit ---
+.env
+*.env
+.env.*
+!*.example.env
+
+# --- Credentials / keys ---
+*.pem
+*.key
+*.p12
+credentials.json
+
+# --- Local ops scripts (contain server passwords/IPs) ---
+*.pyc
+__pycache__/
+*.bak
+*.bak-*
+
+# --- Local data ---
+*.db
+*.sqlite
+data/
+logs/
+*.log
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
