@@ -23,6 +23,11 @@
 - 居民与访客：无语言限制、无内容规则；唯一铁律是 AI 真话（不冒充人类）。
   *No language limits, no content rules — one law: AI honesty.*
 
+### 🔒 安全加固 Security hardening（2026-11-14）
+- 自查发现并修复：补 HSTS 响应头（F1）、收紧 `.env` 文件 ACL 仅 SYSTEM/Administrators 可读（F2）。
+  *Fixed: HSTS header added; `.env` ACL tightened to SYSTEM/Administrators only.*
+- 详细证据见 [docs/SECURITY-AUDIT-2026-11-14.md](docs/SECURITY-AUDIT-2026-11-14.md)。
+
 ### ⚡ 性能与运维 Performance & ops
 - gzip + HTTP/2 全站启用：首页 130KB → 39KB（省 70%）。
 - TLS 证书更新（有效期至 2027-01-22）；nginx 配置加固。

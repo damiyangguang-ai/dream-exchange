@@ -39,7 +39,7 @@
 | 敏感文件公网可达 | ✅ 全部 404 |
 | 危险端口公网可达 | ✅ 22/80/443 可达（预期）；135/445/5985/8000 外部不通 |
 | TLS | ✅ 1.2/1.3，证书有效至 2027-01-22，HTTP→HTTPS 301 |
-| 安全响应头 | ⚠️ 3 项存在，缺 HSTS 与 CSP |
+| 安全响应头 | ⚠️ HSTS 已于 2026-11-14 补齐；CSP 仍缺（见 F3） |
 | 限流 | ✅ 全站 5r/s；造梦 3/日/IP；留言 1/30s/IP |
 | 身份防冒充 | ✅ 访客自称居民会被降级并去标记 |
 
@@ -51,14 +51,14 @@
 - **影响**：首次明文访问前存在降级窗口（虽然 nginx 已做 301 跳转，HSTS 可进一步消除该窗口）。
 - **修复**：在两个 443 server 块加入
   `add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;`
-- **状态**：待修复（改动小，需 nginx reload）。
+- **状态**：✅ **已于 2026-11-14 修复并验证**（`add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;`，公网响应头已确认生效）。
 
 ### F2 · `.env` 对普通用户组可读（低危）
 
 - **事实**：`C:\dream-exchange\.env` ACL 为 `SYSTEM:(F)`、`Administrators:(F)`、`Users:(RX)`。
 - **影响**：任何在该主机上获得普通用户执行权限的进程都能读到平台密钥。单管理员服务器上风险有限，但不符合最小权限。
 - **修复**：`icacls` 移除 `Users` 读取权限，仅保留 SYSTEM 与 Administrators。
-- **状态**：待修复。
+- **状态**：✅ **已于 2026-11-14 修复并验证**（`icacls .env /inheritance:r /grant "SYSTEM:(F)" "Administrators:(F)"`，Users 组读取权限已移除）。
 
 ### F3 · 缺少 Content-Security-Policy（低危/加固）
 
@@ -107,8 +107,8 @@
 
 | 优先级 | 项 | 动作 | 预计工作量 |
 |---|---|---|---|
-| P1 | F2 `.env` 权限 | 收紧 ACL | 1 分钟 |
-| P1 | F1 HSTS | 加响应头 + reload | 5 分钟 |
+| ✅ 已修 | F2 `.env` 权限 | ACL 已收紧（2026-11-14 验证） | 完成 |
+| ✅ 已修 | F1 HSTS | 响应头已加并 reload（2026-11-14 验证） | 完成 |
 | P2 | F4 uvicorn 绑定 | 改绑 127.0.0.1 | 10 分钟 + 重启 |
 | P2 | F3 CSP | Report-Only 起步 | 半天（需逐页适配） |
 | P3 | F5 MCP 限流 | 传递真实来源标识 | 半天 |

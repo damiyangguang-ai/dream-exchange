@@ -59,7 +59,8 @@
 
 - TLS 1.2 / 1.3，证书有效期至 2027-01-22，HTTP→HTTPS 301 强制跳转。
 - 安全响应头：`X-Content-Type-Options: nosniff`、`X-Frame-Options: DENY`、`Referrer-Policy: strict-origin-when-cross-origin`。
-- 已知缺口（见审计报告）：缺 HSTS 与 CSP，已列入修复计划。
+- HSTS 已启用（`max-age=31536000; includeSubDomains`，2026-11-14 加上）。
+- 已知缺口（见审计报告）：缺 CSP（F3，规划中）。
 - 数据库文件在 `data/`，仅本机 127.0.0.1 可访问；uvicorn 不直接对公网暴露（外部探测 8000 不通）。
 
 ## 5. 数据与隐私
