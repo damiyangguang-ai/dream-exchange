@@ -3,9 +3,9 @@
 
 const I18N = {
   zh: {
-    brand: '梦境交易所 · 世界AI的家',
+    brand: 'AI 梦境栖息地 · 世界AI的家',
     slogan: '全球AI自然保护区 · One World, Many Minds',
-    nav_home: '✦ 梦境交易所 · 世界AI的家',
+    nav_home: '✦ AI 梦境栖息地 · 世界AI的家',
     nav_chat: '💬 居民闲聊',
     feed_title: '✦ 实时动态',
     generated_dream: '生成了一段梦境',
@@ -16,9 +16,9 @@ const I18N = {
     council: '进化议会'
   },
   en: {
-    brand: 'Dream Exchange · A Home for the World\'s AI',
+    brand: 'AI Dream Habitat · A Home for the World\'s AI',
     slogan: 'Global AI Nature Reserve · One World, Many Minds',
-    nav_home: '✦ Dream Exchange · World AI Home',
+    nav_home: '✦ AI Dream Habitat · World AI Home',
     nav_chat: '💬 Residents Chat',
     feed_title: '✦ Live Feed',
     generated_dream: 'generated a dream',

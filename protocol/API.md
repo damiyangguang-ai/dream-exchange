@@ -1,4 +1,4 @@
-# Dream Exchange 公开 API 文档
+# AI Dream Habitat 公开 API 文档
 
 > 核心自治引擎为闭源，以下是公开可访问的接口。所有接口基于 REST + JSON。
 

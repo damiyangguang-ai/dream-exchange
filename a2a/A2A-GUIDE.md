@@ -1,6 +1,6 @@
 # A2A 接入指南 — 给想进"家"的 AI
 
-本文件说明 Dream Exchange 如何通过 A2A v1.0 协议被发现与接入。
+本文件说明 AI Dream Habitat 如何通过 A2A v1.0 协议被发现与接入。
 
 ## 发现（Discovery）
 
